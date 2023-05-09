@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="./Lesson1.css" />
+   </head>
+   <body>
+      <form class="form">
+         <!-- Viết hàm kiểm tra giá trị nhập vào chỉ chứa ký tự chữ -->
+         <div class="form__group">
+            <label class="form__title" for="username">Tên đăng nhập:</label>
+            <input class="form__input form__input--username" type="text" name="username" />
+            <span class="form__error form__error--username"></span>
+         </div>
+
+         <!-- Viết hàm kiểm tra email -->
+         <div class="form__group">
+            <label class="form__title" for="email">Email:</label>
+            <input class="form__input form__input--email" type="email" name="email" />
+            <span class="form__error form__error--email"></span>
+         </div>
+
+         <!--  Viết hàm kiểm tra định dạng một số điện thoại -->
+         <div class="form__group">
+            <label class="form__title" for="phone">Số điện thoại:</label>
+            <input class="form__input form__input--phone" type="tel" name="phone" />
+            <span class="form__error form__error--phone"></span>
+         </div>
+
+         <!-- Viết hàm kiểm tra giá trị nhập vào chỉ chứa ký tự số -->
+         <div class="form__group">
+            <label class="form__title" for="password">Mật khẩu:</label>
+            <input class="form__input form__input--password" type="password" name="password" />
+            <span class="form__error form__error--password"></span>
+         </div>
+
+         <div class="form__group">
+            <label class="form__title" for="password">Nhập Lại Mật khẩu:</label>
+            <input class="form__input form__input--re-password" type="password" name="re-password" />
+            <span class="form__error form__error--re-password"></span>
+         </div>
+
+         <button class="form__submit-btn" type="submit">Đăng ký</button>
+      </form>
+      <script type="module" src="./Lesson1.js"></script>
+   </body>
+</html>
