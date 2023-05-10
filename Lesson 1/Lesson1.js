@@ -32,51 +32,19 @@ const setSuccess = (input) => {
    errorMassage.innerText = "";
 };
 
-form.addEventListener("submit", (event) => {
-   event.preventDefault();
-
-   const fields = [
-      { input: usernameInput, message: "Tên đăng nhập không được để trống" },
-      { input: emailInput, message: "Email không được để trống" },
-      { input: phoneInput, message: "Số điện thoại không được để trống" },
-      { input: passwordInput, message: "Mật khẩu không được để trống" },
-      { input: rePasswordInput, message: "Mật khẩu không được để trống" },
-   ];
-
-   fields.forEach((field) => {
-      if (!field.input.value) {
-         setError(field.input, field.message);
-      } else {
-         setSuccess(field.input);
-      }
-   });
-
-   if (!form.querySelector(".form__input--error")) {
-      localStorage.setItem("username", usernameInput.value);
-      localStorage.setItem("password", passwordInput.value);
-      localStorage.setItem("email", emailInput.value);
-      localStorage.setItem("phone", phoneInput.value);
-
-      alert("Bạn đã đăng kí thành công");
-      location.reload();
-   }
-});
-
-usernameInput.addEventListener("input", function () {
+usernameInput.addEventListener("input", () => {
    if (usernameInput.value === "") {
-      setSuccess(usernameInput);
-   } else if (!validateText(usernameInput.value)) {
-      setError(usernameInput, "Tên đăng nhập không chứa số và khoảng trống");
-   } else if (usernameInput.value.length < 8) {
-      setError(usernameInput, "Tên đăng nhập từ 8 kí tự trở lên");
+      setError(usernameInput, "Tên đăng nhập không được để trống");
+   } else if (!validateText(usernameInput.value) || usernameInput.value.length < 8) {
+      setError(usernameInput, "Tên đăng nhập chỉ chứa chữ cái và từ 8 kí tự trở lên");
    } else {
       setSuccess(usernameInput);
    }
 });
 
-emailInput.addEventListener("input", function () {
+emailInput.addEventListener("input", () => {
    if (emailInput.value === "") {
-      setSuccess(emailInput);
+      setError(emailInput, "Email không được để trống");
    } else if (!validateEmail(emailInput.value)) {
       setError(emailInput, "Email không hợp lệ");
    } else {
@@ -84,9 +52,9 @@ emailInput.addEventListener("input", function () {
    }
 });
 
-phoneInput.addEventListener("input", function () {
+phoneInput.addEventListener("input", () => {
    if (phoneInput.value === "") {
-      setSuccess(phoneInput);
+      setError(phoneInput, "Số điện thoại không được để trống");
    } else if (!validatePhoneNumberVN(phoneInput.value)) {
       setError(phoneInput, "Số điện thoại chưa đúng");
    } else {
@@ -94,24 +62,39 @@ phoneInput.addEventListener("input", function () {
    }
 });
 
-passwordInput.addEventListener("input", function () {
+passwordInput.addEventListener("input", () => {
    if (passwordInput.value === "") {
-      setSuccess(passwordInput);
-   } else if (!validateNumber(passwordInput.value)) {
-      setError(passwordInput, "Mật khẩu không bao gốm khảng trống, chữ, kí tự đặt biệt");
-   } else if (passwordInput.value.length < 8) {
-      setError(passwordInput, "Mật khẩu ít nhất 8 kí tự");
+      setError(passwordInput, "Mật khẩu không được để trống");
+   } else if (!validateNumber(passwordInput.value) || passwordInput.value.length < 8) {
+      setError(passwordInput, "Mật khẩu chỉ chứa số và từ 8 kí tự trở lên");
    } else {
       setSuccess(passwordInput);
    }
 });
 
-rePasswordInput.addEventListener("input", function () {
-   if (rePasswordInput.value === "") {
-      setSuccess(rePasswordInput);
-   } else if (rePasswordInput.value != passwordInput.value) {
+rePasswordInput.addEventListener("input", () => {
+   if (rePasswordInput.value != passwordInput.value) {
       setError(rePasswordInput, "Mật khẩu nhập lại chưa đúng");
    } else {
       setSuccess(rePasswordInput);
+   }
+});
+
+form.addEventListener("submit", (event) => {
+   event.preventDefault();
+   const error = document.querySelector(".form__input--error");
+
+   if (usernameInput.value === "" || emailInput.value === "" || phoneInput.value === "" || passwordInput.value === "" || rePasswordInput.value === "") {
+      alert("Vui lòng điền tất cả thông tin bên dưới");
+   } else if (error) {
+      alert("Vui lòng nhập thông tin đúng theo gợi ý");
+   } else {
+      localStorage.setItem("Username", usernameInput.value);
+      localStorage.setItem("Password", passwordInput.value);
+      localStorage.setItem("Email", emailInput.value);
+      localStorage.setItem("Phone", phoneInput.value);
+
+      alert("Bạn đã đăng kí thành công");
+      location.reload();
    }
 });
