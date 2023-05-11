@@ -32,6 +32,14 @@ const setSuccess = (input) => {
    errorMassage.innerText = "";
 };
 
+const validateRePassword = () => {
+   if (rePasswordInput.value != passwordInput.value) {
+      setError(rePasswordInput, "Mật khẩu nhập lại chưa đúng");
+   } else {
+      setSuccess(rePasswordInput);
+   }
+};
+
 usernameInput.addEventListener("input", () => {
    if (usernameInput.value === "") {
       setError(usernameInput, "Tên đăng nhập không được để trống");
@@ -70,14 +78,15 @@ passwordInput.addEventListener("input", () => {
    } else {
       setSuccess(passwordInput);
    }
+   validateRePassword();
 });
 
 rePasswordInput.addEventListener("input", () => {
-   if (rePasswordInput.value != passwordInput.value) {
-      setError(rePasswordInput, "Mật khẩu nhập lại chưa đúng");
-   } else {
-      setSuccess(rePasswordInput);
-   }
+   validateRePassword();
+});
+
+passwordInput.addEventListener("change", () => {
+   validateRePassword();
 });
 
 form.addEventListener("submit", (event) => {
