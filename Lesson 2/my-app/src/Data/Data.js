@@ -39,4 +39,9 @@ export const data = [
       title: "Undo, Redo, & Revisions",
       decription: "Divi works like a modern software application. Easily undo, redo and travel through your entire editing history. If you make a mistake, Divi has your back.",
    },
+   {
+      image: "https://www.elegantthemes.com/images/icons/big/design.svg",
+      title: "True Visual Editing",
+      decription: "Design your page in real time and see the results instantly. Create and customize your pages using intuitive visual controls.",
+   },
 ];

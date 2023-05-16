@@ -1,3 +1,4 @@
+import "./Card.css"
 const Card = ({ title, image, decription }) => {
    return (
       <div className="grid__colum">
@@ -8,6 +9,7 @@ const Card = ({ title, image, decription }) => {
             <p class="grid__title">{title}</p>
             <p class="grid__dicription">{decription}</p>
          </span>
+
       </div>
    );
 };
