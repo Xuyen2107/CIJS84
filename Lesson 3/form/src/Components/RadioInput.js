@@ -7,7 +7,7 @@ const RadioInput = ({ title, name, dataRadio }) => {
          {dataRadio.map((item, index) => (
             <div key={index} className="form__radio">
                <label className="form__radio-label">{item.label}</label>
-               <input className="form__radio-input" type="radio" name={name} value={item.label} />
+               <input className="form__radio-input" type="radio" name={name} value={item.label} required/>
             </div>
          ))}
       </div>
