@@ -1,7 +1,7 @@
 import React from "react";
 
 const CustomInput = (prop) => {
-   const { title, classNameInput, type, name, placeholder, value } = prop;
+   const { title, classNameInput, type, name, placeholder, value, onChange, error } = prop;
 
    const formGroupStyle = {
       display: "flex",
@@ -24,6 +24,12 @@ const CustomInput = (prop) => {
       border: "none",
    };
 
+   const errorStyle = {
+      color: "red",
+      fontSize: "14px",
+      fontWeight: "400",
+   };
+
    return (
       <div className="form__group" style={formGroupStyle}>
          <label className="form__label" style={labelStyle}>
@@ -34,10 +40,15 @@ const CustomInput = (prop) => {
             type={type}
             name={name}
             value={value}
+            onChange={onChange}
             placeholder={placeholder}
-            required
             style={inputStye}
          />
+         {error && (
+            <label className="form__error" style={errorStyle}>
+               {error}
+            </label>
+         )}
       </div>
    );
 };

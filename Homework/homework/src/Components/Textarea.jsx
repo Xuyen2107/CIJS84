@@ -1,7 +1,7 @@
 import React from "react";
 
 const TextArea = (props) => {
-   const { title, name, value, placeholder } = props;
+   const { title, name, value, onChange, placeholder, error } = props;
 
    const formGroupTextStyle = {
       display: "flex",
@@ -25,6 +25,12 @@ const TextArea = (props) => {
       border: "none",
    };
 
+   const errorStyle = {
+      color: "red",
+      fontSize: "14px",
+      fontWeight: "400",
+   };
+
    return (
       <div className="form__group-textarea" style={formGroupTextStyle}>
          <label className="form__label" style={labelStyle}>
@@ -34,10 +40,14 @@ const TextArea = (props) => {
             className="form__textarea-address"
             name={name}
             value={value}
+            onChange={onChange}
             placeholder={placeholder}
             required
             style={textAreaStyle}
          />
+         <label className="form__error" style={errorStyle}>
+            {error}
+         </label>
       </div>
    );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 
 const RadioInput = (props) => {
-   const { title, name, dataRadio } = props;
+   const { title, name, checked, onChange, dataRadio, error } = props;
 
    const formGroupRadioStyle = {
       display: "flex",
@@ -21,23 +21,34 @@ const RadioInput = (props) => {
       gap: "5px",
    };
 
+   const errorStyle = {
+      color: "red",
+      fontSize: "14px",
+      fontWeight: "400",
+   };
+
    return (
       <div className="form__group-radio" style={formGroupRadioStyle}>
          <label className="form__label" style={labelStyle}>
             {title}:
          </label>
-         {dataRadio.map((item, index) => (
-            <div key={index} className="form__radio" style={formRadio}>
+         {dataRadio.map((item) => (
+            <div key={item.key} className="form__radio" style={formRadio}>
                <input
                   className="form__radio-input"
                   type="radio"
                   name={name}
                   value={item.label}
+                  checked={checked === item.label}
+                  onChange={onChange}
                   required
                />
                <label className="form__radio-label">{item.label}</label>
             </div>
          ))}
+         <label className="form__error" style={errorStyle}>
+            {error}
+         </label>
       </div>
    );
 };

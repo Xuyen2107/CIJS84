@@ -11,6 +11,7 @@ const Lesson5 = () => {
    const actRemove = (e) => {
       if (number <= 0) {
          e.preventDefault();
+         alert("Đến 0 dừng rồi nhé");
       } else {
          setNumber((prev) => prev - 1);
       }
@@ -18,23 +19,22 @@ const Lesson5 = () => {
 
    const [number1, setNumber1] = useState(1);
    const light = () => {
-      setNumber1((prev) => prev + 1);
-      if (number1 === 3) {
-         setNumber1(1);
-      }
+      setNumber1((pre) => (pre === 3 ? 1 : pre + 1));
    };
+   console.log(number1);
    return (
       <>
          <div
             style={{
                display: "flex",
                flexDirection: "column",
+               gap: "20px",
                alignItems: "center",
-               margin: "0 auto",
+               margin: "50px auto",
             }}
          >
-            <label>{number}</label>
-            <div>
+            <label style={{ fontSize: "20px" }}>{number}</label>
+            <div style={{ display: "flex", gap: "10px" }}>
                <Button nameBtn="+" onClick={actAdd} />
                <Button nameBtn="-" onClick={actRemove} />
             </div>
@@ -50,7 +50,16 @@ const Lesson5 = () => {
             }}
          >
             <Button nameBtn="Next" onClick={light} />
-            <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+            <div
+               style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "10px",
+                  padding: "20px",
+                  backgroundColor: "black",
+                  borderRadius: "45px",
+               }}
+            >
                <span
                   style={{
                      display: "block",

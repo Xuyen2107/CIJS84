@@ -1,7 +1,7 @@
 import React from "react";
 
 const Button = (props) => {
-   const { type, nameBtn, onClick, onSubmit } = props;
+   const { type, nameBtn, onClick } = props;
 
    const buttonStyle = {
       border: "none",
@@ -15,13 +15,7 @@ const Button = (props) => {
    };
 
    return (
-      <button
-         className="form__btn"
-         type={type}
-         onSubmit={onSubmit}
-         onClick={onClick}
-         style={buttonStyle}
-      >
+      <button className="form__btn" type={type} onClick={onClick} style={buttonStyle}>
          {nameBtn}
       </button>
    );
