@@ -32,14 +32,14 @@ const RadioInput = (props) => {
          <label className="form__label" style={labelStyle}>
             {title}:
          </label>
-         {dataRadio.map((item) => (
-            <div key={item.key} className="form__radio" style={formRadio}>
+         {dataRadio.map((item, idx) => (
+            <div key={idx} className="form__radio" style={formRadio}>
                <input
                   className="form__radio-input"
                   type="radio"
                   name={name}
                   value={item.label}
-                  checked={checked === item.label}
+                  checked={item.label === checked}
                   onChange={onChange}
                   required
                />

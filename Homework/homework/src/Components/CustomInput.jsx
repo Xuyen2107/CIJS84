@@ -21,7 +21,7 @@ const CustomInput = (prop) => {
       fontSize: "14px",
       borderRadius: "10px",
       outline: "none",
-      border: "none",
+      border: "1px solid black",
    };
 
    const errorStyle = {

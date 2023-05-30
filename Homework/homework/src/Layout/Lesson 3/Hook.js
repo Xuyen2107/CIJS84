@@ -36,27 +36,31 @@ const UserHookRegister = () => {
       const studentClone = JSON.parse(JSON.stringify(student));
       const errorClone = JSON.parse(JSON.stringify(error));
 
-      if (name === "FirstName") {
-         studentClone.FirstName = e.target.value;
-      } else if (name === "MiddleName") {
-         studentClone.MiddleName = e.target.value;
-      } else if (name === "LastName") {
-         studentClone.LastName = e.target.value;
-      } else if (name === "Course") {
-         studentClone.Course = e.target.value;
-      } else if (name === "Gender") {
-         studentClone.Gender = e.target.value;
-      } else if (name === "Phone") {
-         studentClone.Phone = e.target.value;
-      } else if (name === "Address") {
-         studentClone.Address = e.target.value;
-      } else if (name === "Email") {
-         studentClone.Email = e.target.value;
-      } else if (name === "Password") {
-         studentClone.Password = e.target.value;
-      } else {
-         studentClone.RePassword = e.target.value;
-      }
+      studentClone[name] = e.target.value;
+
+      // if (name === "FirstName") {
+      //    studentClone.FirstName = e.target.value;
+      // } else if (name === "MiddleName") {
+      //    studentClone.MiddleName = e.target.value;
+      // } else if (name === "LastName") {
+      //    studentClone.LastName = e.target.value;
+      // } else if (name === "Course") {
+      //    studentClone.Course = e.target.value;
+      // } else if (name === "Gender") {
+      //    studentClone.Gender = e.target.value;
+      // } else if (name === "Phone") {
+      //    studentClone.Phone = e.target.value;
+      // } else if (name === "Address") {
+      //    studentClone.Address = e.target.value;
+      // } else if (name === "Email") {
+      //    studentClone.Email = e.target.value;
+      // } else if (name === "Password") {
+      //    studentClone.Password = e.target.value;
+      // } else {
+      //    studentClone.RePassword = e.target.value;
+      // }
+
+      console.log(100, studentClone);
 
       if (studentClone.FirstName === "" || !validateText(studentClone.FirstName)) {
          errorClone.FirstName = "Vui lòng nhập đúng họ của bạn";
@@ -132,10 +136,12 @@ const UserHookRegister = () => {
       } else {
          alert("Bạn đã đăng kí thành công");
          console.log("User", student);
+         
+         
       }
    };
 
-   return { student, setStudent, error, setError, handleInputChange, submit };
+   return { student, error, handleInputChange, submit };
 };
 
 export default UserHookRegister;

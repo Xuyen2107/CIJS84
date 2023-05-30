@@ -1,0 +1,76 @@
+.form__register {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 600px;
+   background-color: aqua;
+   padding: 20px;
+   margin: 0 auto;
+   margin-bottom: 50px;
+}
+
+hr {
+   border: 1px solid white;
+   width: 100%;
+   margin: 20px;
+}
+
+.form {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+table,
+th,
+td {
+   border-collapse: collapse;
+   border-bottom: 1px solid black;
+}
+
+table {
+   margin-top: 20px;
+   width: 100%;
+}
+
+th {
+   padding: 10px 5px;
+}
+
+td {
+   padding: 10px;
+   text-align: center;
+}
+
+.update {
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+   border: 1px solid blue;
+   border-radius: 5px;
+}
+
+.update > i {
+   color: blue;
+}
+
+.delete {
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+   border: 1px solid red;
+   border-radius: 5px;
+}
+
+.delete > i {
+   font-size: 20px;
+   color: red;
+}
+
+.delete:hover {
+   background-color: red;
+}
+
+.delete:hover > i {
+   color: white;
+}
