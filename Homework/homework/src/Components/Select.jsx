@@ -17,8 +17,11 @@ const Select = (props) => {
    };
 
    const formSelect = {
-      padding: "5px 10px",
+      padding: "10px",
+      fontSize: "16px",
+      borderRadius: "10px",
       outline: "none",
+      border: "1px solid black",
    };
 
    const errorStyle = {
@@ -39,9 +42,8 @@ const Select = (props) => {
             onChange={onChange}
             style={formSelect}
          >
-            <option value="" disabled>{optionDisabled}</option>
             {dataOption.map((item) => (
-               <option key={item.key} className="form__option" value={item.label}>
+               <option key={item.key} className="form__option" value={item.key}>
                   {item.name}
                </option>
             ))}

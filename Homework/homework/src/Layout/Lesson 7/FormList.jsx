@@ -5,13 +5,24 @@ import "./Register.css";
 import UserHookRegister from "./Hook.js";
 
 const dataRadio = [
-   { key: 1, label: "Nam" },
-   { key: 2, label: "Nữ" },
+   { key: 0, label: "Nam" },
+   { key: 1, label: "Nữ" },
 ];
 
 const Lesson7 = () => {
-   const { user, error, listUser, result, handleInputChange, actThem, actXoa, actSua, actCapNhat } =
-      UserHookRegister();
+   const {
+      user,
+      error,
+      listUser,
+      result,
+      number,
+      handleInputChange,
+      actThem,
+      actXoa,
+      actSua,
+      actCapNhat,
+      actReset,
+   } = UserHookRegister();
 
    return (
       <div className="form__register">
@@ -55,7 +66,10 @@ const Lesson7 = () => {
             {result ? (
                <Button type="button" nameBtn="Thêm" onClick={actThem} />
             ) : (
-               <Button type="button" nameBtn="Cập nhật" onClick={actCapNhat} />
+               <div className="act">
+                  <Button type="button" nameBtn="Cập nhật" onClick={actCapNhat} />
+                  <Button type="button" nameBtn="Reset" onClick={actReset} />
+               </div>
             )}
          </form>
          <table>
@@ -74,18 +88,41 @@ const Lesson7 = () => {
                      <td>
                         {item.Ho} {item.Ten}
                      </td>
-                     <td>{item.GioiTinh}</td>
-                     <td key={idx}>
-                        <button
-                           className="update"
-                           type="button"
-                           onClick={() => {
-                              actSua(item.Id);
-                           }}
-                        >
-                           <i class="fa-solid fa-eye"></i>
-                        </button>
-                     </td>
+                     {item.GioiTinh == 0 ? (
+                        <td>
+                           <span className="male">Nam</span>
+                        </td>
+                     ) : (
+                        <td>
+                           <span className="female">Nữ</span>
+                        </td>
+                     )}
+                     {number == idx ? (
+                        <td>
+                           <button
+                              className="update"
+                              type="button"
+                              onClick={() => {
+                                 actSua(item.Id);
+                              }}
+                           >
+                              <i class="fa-solid fa-eye-slash"></i>
+                           </button>
+                        </td>
+                     ) : (
+                        <td>
+                           <button
+                              className="update"
+                              type="button"
+                              onClick={() => {
+                                 actSua(item.Id);
+                              }}
+                           >
+                              <i class="fa-solid fa-eye"></i>
+                           </button>
+                        </td>
+                     )}
+
                      <td>
                         <button
                            className="delete"

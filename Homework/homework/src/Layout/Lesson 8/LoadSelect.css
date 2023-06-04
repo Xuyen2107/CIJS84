@@ -1,26 +1,3 @@
-.form__register {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 600px;
-   background-color: aqua;
-   padding: 20px;
-   margin: 0 auto;
-   margin-bottom: 50px;
-}
-
-hr {
-   border: 1px solid white;
-   width: 100%;
-   margin: 20px;
-}
-
-.form {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-}
 table,
 th,
 td {
@@ -42,6 +19,11 @@ td {
    text-align: center;
 }
 
+.select {
+   display: flex;
+   gap: 10px;
+}
+
 .male {
    background-color: rgb(74, 233, 74);
    padding: 10px 20px;
@@ -54,11 +36,6 @@ td {
    border-radius: 10px;
 }
 
-.act {
-   display: flex;
-   gap: 10px;
-}
-
 .update {
    width: 30px;
    height: 30px;
@@ -69,6 +46,15 @@ td {
 
 .update > i {
    color: blue;
+}
+
+.update:hover {
+   background-color: blue;
+}
+
+.update:hover > i {
+   color: white;
+   background-color: blue;
 }
 
 .delete {

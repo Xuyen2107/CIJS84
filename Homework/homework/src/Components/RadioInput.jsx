@@ -38,10 +38,9 @@ const RadioInput = (props) => {
                   className="form__radio-input"
                   type="radio"
                   name={name}
-                  value={item.label}
-                  checked={item.label === checked}
+                  value={item.key}
+                  checked={item.key == checked}
                   onChange={onChange}
-                  required
                />
                <label className="form__radio-label">{item.label}</label>
             </div>

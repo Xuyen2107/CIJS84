@@ -3,7 +3,9 @@
 // import Lesson4 from "./Layout/Lesson 4/ImageShow.jsx";
 // import Lesson5 from "./Layout/Lesson 5/CountNumber.jsx";
 // import Lesson6 from "./Layout/Lesson 6/CustomCount.jsx";
-import Lesson7 from "./Layout/Lesson 7/FormList.jsx";
+// import Lesson7 from "./Layout/Lesson 7/FormList.jsx";
+import Lesson8 from "./Layout/Lesson 8/LoadSelect.jsx";
+// import LessonTest from "./Layout/Lesson Test/FormListTest.jsx";
 
 function App() {
    return (
@@ -13,7 +15,9 @@ function App() {
          {/* <Lesson4/> */}
          {/* <Lesson5 /> */}
          {/* <Lesson6 /> */}
-         <Lesson7 />
+         {/* <Lesson7 /> */}
+         <Lesson8 />
+         {/* <LessonTest /> */}
       </div>
    );
 }

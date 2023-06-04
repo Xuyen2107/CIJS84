@@ -6,7 +6,7 @@ const UserHookRegister = () => {
       Id: "",
       Ho: "",
       Ten: "",
-      GioiTinh: "",
+      GioiTinh: -1,
    };
 
    const errorForm = {
@@ -16,17 +16,18 @@ const UserHookRegister = () => {
    };
 
    const listDefault = [
-      { Id: "1", Ho: "Phạm", Ten: "Xuyên A", GioiTinh: "Nam" },
-      { Id: "2", Ho: "Phạm", Ten: "Xuyên B", GioiTinh: "Nam" },
-      { Id: "3", Ho: "Phạm", Ten: "Xuyên C", GioiTinh: "Nam" },
-      { Id: "4", Ho: "Phạm", Ten: "Xuyên D", GioiTinh: "Nam" },
-      { Id: "5", Ho: "Phạm", Ten: "Xuyên E", GioiTinh: "Nam" },
+      { Id: "1", Ho: "Phạm", Ten: "Xuyên A", GioiTinh: "0" },
+      { Id: "2", Ho: "Phạm", Ten: "Xuyên B", GioiTinh: "1" },
+      { Id: "3", Ho: "Phạm", Ten: "Xuyên C", GioiTinh: "0" },
+      { Id: "4", Ho: "Phạm", Ten: "Xuyên D", GioiTinh: "1" },
+      { Id: "5", Ho: "Phạm", Ten: "Xuyên E", GioiTinh: "0" },
    ];
 
    const [user, setUser] = useState(UserDefault);
    const [error, setError] = useState(errorForm);
    const [listUser, setListUser] = useState(listDefault);
    const [result, setResult] = useState(true);
+   const [number, setNumber] = useState(0);
 
    const { validateText } = validate();
 
@@ -48,7 +49,7 @@ const UserHookRegister = () => {
          errorClone.Ten = "";
       }
 
-      if (userClone.GioiTinh === "") {
+      if (userClone.GioiTinh == -1) {
          errorClone.GioiTinh = "Vui lòng chọn Gender";
       } else {
          errorClone.GioiTinh = "";
@@ -56,7 +57,6 @@ const UserHookRegister = () => {
 
       setUser(userClone);
       setError(errorClone);
-      console.log(222, userClone);
    };
 
    const genId = () => {
@@ -70,11 +70,11 @@ const UserHookRegister = () => {
    };
 
    const actThem = () => {
-      const userEmpty = Object.values(user).every((values) => values === "");
       const errorEmpty = Object.values(error).every((values) => values === "");
+      const userClone = JSON.parse(JSON.stringify(user));
       const listUserClone = JSON.parse(JSON.stringify(listUser));
 
-      if (userEmpty || !errorEmpty) {
+      if (userClone.GioiTinh == -1 || !errorEmpty) {
          alert("Vui lòng điền đúng tất cả thông tin bên dưới");
       } else {
          user.Id = genId();
@@ -115,7 +115,24 @@ const UserHookRegister = () => {
       setUser(UserDefault);
       setResult(true);
    };
-   return { user, error, listUser, result, handleInputChange, actThem, actXoa, actSua, actCapNhat };
+
+   const actReset = () => {
+      setUser(UserDefault);
+      setResult(true);
+   };
+   return {
+      user,
+      error,
+      listUser,
+      result,
+      number,
+      handleInputChange,
+      actThem,
+      actXoa,
+      actSua,
+      actCapNhat,
+      actReset,
+   };
 };
 
 export default UserHookRegister;

@@ -18,7 +18,7 @@ const CustomInput = (prop) => {
 
    const inputStye = {
       padding: "10px",
-      fontSize: "14px",
+      fontSize: "16px",
       borderRadius: "10px",
       outline: "none",
       border: "1px solid black",
