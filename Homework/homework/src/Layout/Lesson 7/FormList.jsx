@@ -15,7 +15,6 @@ const Lesson7 = () => {
       error,
       listUser,
       result,
-      number,
       handleInputChange,
       actThem,
       actXoa,
@@ -97,31 +96,18 @@ const Lesson7 = () => {
                            <span className="female">Nữ</span>
                         </td>
                      )}
-                     {number == idx ? (
-                        <td>
-                           <button
-                              className="update"
-                              type="button"
-                              onClick={() => {
-                                 actSua(item.Id);
-                              }}
-                           >
-                              <i class="fa-solid fa-eye-slash"></i>
-                           </button>
-                        </td>
-                     ) : (
-                        <td>
-                           <button
-                              className="update"
-                              type="button"
-                              onClick={() => {
-                                 actSua(item.Id);
-                              }}
-                           >
-                              <i class="fa-solid fa-eye"></i>
-                           </button>
-                        </td>
-                     )}
+
+                     <td>
+                        <button
+                           className="update"
+                           type="button"
+                           onClick={() => {
+                              actSua(item.Id);
+                           }}
+                        >
+                           <i class="fa-solid fa-eye"></i>
+                        </button>
+                     </td>
 
                      <td>
                         <button

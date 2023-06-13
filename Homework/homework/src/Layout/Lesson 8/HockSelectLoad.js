@@ -36,7 +36,7 @@ const clone = (name) => {
 const useHookSelect = () => {
    const [filter, setFilter] = useState(dataFilter);
    const [dataGioiTinh, setDataGioiTinh] = useState(gioiTinhDefault);
-   const [listGender, setListGender] = useState([]);
+   // const [listGender, setListGender] = useState([]);
    const [list, setList] = useState([]);
    const [listAll, setListAll] = useState([]);
 
@@ -46,32 +46,24 @@ const useHookSelect = () => {
    }, []);
 
    useEffect(() => {
+      let update = [];
       if (filter.filterGioiTinh) {
          if (filter.filterGioiTinh.key == -1) {
+            update = listAll;
             setList(listAll);
          } else {
             const listClone = JSON.parse(JSON.stringify(listAll));
-            const update = listClone.filter((x) => x.GioiTinh == filter.filterGioiTinh.key);
+            update = listClone.filter((x) => x.GioiTinh == filter.filterGioiTinh.key);
             setList(update);
-            setListGender(update);
          }
       }
       if (filter.filterSearch?.length > 0) {
-         if (filter.filterGioiTinh.key == -1) {
-            const listClone = clone(listAll);
-            const searchValue = filter.filterSearch.trim().toUpperCase();
-            const result = listClone.filter((item) =>
-               Remove_Viet(item.Ho + " " + item?.Ten).includes(Remove_Viet(searchValue))
-            );
-            setList(result);
-         } else {
-            const listClone = clone(listGender);
-            const searchValue = filter.filterSearch.trim().toLowerCase();
-            const result = listClone.filter((item) =>
-               Remove_Viet(item.Ho + " " + item?.Ten).includes(Remove_Viet(searchValue))
-            );
-            setList(result);
-         }
+         const listClone = clone(update);
+         const searchValue = filter.filterSearch.trim().toLowerCase();
+         const result = listClone.filter((item) =>
+            Remove_Viet(item.Ho + " " + item?.Ten).includes(Remove_Viet(searchValue))
+         );
+         setList(result);
       }
    }, [filter]);
 

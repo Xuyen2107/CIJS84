@@ -125,7 +125,6 @@ const UserHookRegister = () => {
       error,
       listUser,
       result,
-      number,
       handleInputChange,
       actThem,
       actXoa,
